@@ -6,10 +6,9 @@ import scrollToElement from 'scroll-to-element';
 import axios from 'axios';
 import ProductStrip from "../components/ProductStrip";
 import Slider from "react-slick";
-import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick.css';
 import * as productsData from "../productData";
 
-console.log(productsData);
 
 export default class Home extends React.Component {
    
@@ -187,7 +186,6 @@ export default class Home extends React.Component {
     }
 
     render() {
-        console.log(productsData);
         return (
             <div className="product-page">
                 <div className="page-header">
@@ -256,11 +254,23 @@ export default class Home extends React.Component {
                         </div>
                     </div>
                     <div className="product-slider-block" id="psb1">
-                        <div className="product-slider-name">
-                            <h3>HEADPHONES</h3>
+                        <div className="site-inner-big">
+                            <div className="product-slider-name">
+                                <h3>HEADPHONES</h3>
+                            </div>
+                            <div className="product-slider" id="ps1">
+                                <ProductStrip products={ productsData.headphones } />
+                            </div>
                         </div>
-                        <div className="product-slider" id="ps1">
-                            <ProductStrip products={ productsData.headphones } />
+                    </div>
+                    <div className="product-slider-block">
+                        <div className="site-inner-big">
+                            <div className="product-slider-name">
+                                <h3>SPEAKERS</h3>
+                            </div>
+                            <div className="product-slider">
+                                <ProductStrip products={ productsData.speakers } />
+                            </div>
                         </div>
                     </div>
                 </div>

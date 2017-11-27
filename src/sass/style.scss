@@ -41,6 +41,8 @@
 $dark: #242424;
 $grey: #edebd4;
 $site-width: 1100px;
+$bold: 'Gotham-Bold';
+$light: 'Gotham-Light';
 
 body, html{
     padding:0;
@@ -70,6 +72,16 @@ h2, strong{
   padding: 0 15px;
   box-sizing: border-box;
   @media screen and (max-width: $site-width){
+    width: 100%;
+  }
+}
+
+.site-inner-big{
+  width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  @media screen and (max-width: 1400px){
     width: 100%;
   }
 }
@@ -498,8 +510,65 @@ footer.site-footer{
 
 .productBox{
   background: #fff;
+  padding: 15px 15px 0;
+  box-sizing: border-box;
+  margin: 0 15px 20px;
+  .productName{
+    text-align: left;
+    font-family: $bold;
+    font-size: 16px;
+    margin: 0 0 5px;
+    height: 40px;
+  }
+  .productPoint{
+    text-align: left;
+    font-size: 14px;
+    margin: 0 0 5px;
+  }
   .productImage{
     height: 300px;
+  }
+}
 
+
+.product-slider-block{
+  padding: 50px; 
+  .product-slider{
+    position: relative;
+  }
+  .slick-prev{
+    width: 21px; 
+    height: 40px;
+    background: url('../images/left-arrow.png') no-repeat transparent;
+    font-size:0;
+    position: absolute;
+    top:50%;
+    left:-35px;
+    z-index:90;
+    border:0;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .slick-next{
+    width: 21px; 
+    height: 40px;
+    background: url('../images/right-arrow.png') no-repeat transparent;
+    font-size:0;
+    position: absolute;
+    top:50%;
+    right:-35px;
+    z-index:90;
+    border:0;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+#psb1{
+  background: #d9d9d9;
+  .product-slider-name{
+    text-align: left;
+    margin: 0 25px 25px;
+    font-size: 30px;
   }
 }

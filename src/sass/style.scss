@@ -1,0 +1,505 @@
+@font-face {
+  font-family: 'Gotham-Bold';
+    src:    url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),  
+            url('../fonts/Gotham-Bold.woff') format('woff'), 
+            url('../fonts/Gotham-Bold.ttf')  format('truetype'), 
+            url('../fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham-Light';
+    src:    url('../fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),  
+            url('../fonts/Gotham-Light.woff') format('woff'), 
+            url('../fonts/Gotham-Light.ttf')  format('truetype'), 
+            url('../fonts/Gotham-Light.svg#Gotham-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src:    url('../fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/Gotham-Medium.woff') format('woff'), 
+            url('../fonts/Gotham-Medium.ttf')  format('truetype'), 
+            url('../fonts/Gotham-Medium.svg#Gotham-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham-Book';
+  src:  url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),  
+        url('../fonts/Gotham-Book.woff') format('woff'), 
+        url('../fonts/Gotham-Book.ttf')  format('truetype'), 
+        url('../fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$dark: #242424;
+$grey: #edebd4;
+$site-width: 1100px;
+
+body, html{
+    padding:0;
+    margin:0;
+}
+
+body{
+    background: #f8f8f8;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #000;
+    font-family: 'Gotham-Book';
+    position: relative;
+}
+
+h2, strong{
+  font-family: 'Gotham-Bold';
+}
+
+.clear{
+  clear: both;
+}
+
+.site-inner{
+  width: $site-width;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  @media screen and (max-width: $site-width){
+    width: 100%;
+  }
+}
+
+.btn-w{
+  display: inline-block;
+  padding: 10px 35px;
+  font-family: 'Gotham-Bold';
+  font-weight: bold;
+  color: #242424;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #f8f8f8;
+  border-radius: 25px;
+  transition: opacity 0.3s ease-out;
+  background-clip: padding-box;
+  border: 1px solid #f8f8f8;
+  &:hover{
+    color: #f8f8f8;
+    text-decoration: none;
+    background: #242424;
+    border: 1px solid #f8f8f8;
+  }
+}
+
+.btn-b{
+  display: inline-block;
+  padding: 10px 35px;
+  font-family: 'Gotham-Bold';
+  font-weight: bold;
+  color: #f8f8f8;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #242424;
+  border-radius: 25px;
+  transition: opacity 0.3s ease-out;
+  background-clip: padding-box;
+  border: 1px solid #242424;
+  &:hover{
+    color: #242424;
+    text-decoration: none;
+    background: #f8f8f8;
+    border: 1px solid #242424;
+  }
+}
+
+.flex-row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  .col-2{
+    width: 50%;
+    @media screen and (max-width: 700px){
+      width: 100%;
+    }
+  }
+  .col-3{
+    width: 33%;
+    @media screen and (max-width: 700px){
+      width: 100%;
+    }
+  }
+}
+
+header.site-heaader{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  width: 100%;
+  z-index: 99;
+  .site-header-inner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    .header-btn{
+      margin-left: auto;
+    }
+  }
+  
+}
+
+footer.site-footer{
+  background: $dark;
+  padding-top: 30px;
+  .site-footer-inner{
+    display: flex;
+    flex-wrap: wrap;
+    .footer-logo{
+      img{
+        display:block;
+      }
+    }
+    .site-copy{
+      color: #fff;
+      font-size: 12px;
+      padding: 41px 20px 0;
+    }
+  }
+}
+
+.product-page{
+  .page-header{
+    padding: 250px 0;
+    background: url(../images/header.jpg) no-repeat center center;
+    background-size: cover;
+    height: 90vh;
+    box-sizing:border-box;
+    .page-header-inner{
+      text-align: center;
+      width: 80%;
+      color: #fff;
+      margin: 0 auto;
+      padding: 30px 40px;
+      h2{
+        font-size: 60px;
+        margin: 0 0 20px;
+      }
+      p{
+        width: 90%;
+        font-size: 18px;
+        margin: 0 auto 20px;
+      }
+      @media screen and (max-width: 650px){
+        width: 90%;
+        box-sizing: border-box;
+        padding: 20px;
+        h2{
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+.page-section{
+  text-align: center;
+  padding: 90px 0;
+  .section-title{
+    h2{
+      font-size: 28px;
+      font-family: 'Gotham-Bold';
+      width: 80%;
+      margin: 0 auto 25px;
+
+    }
+  }
+  .section-content{
+    padding: 55px;
+  }
+}
+#s1{
+  .section-content{
+    background: #242424;
+    color: #fff;
+    
+    .points-block{
+      .points-circle{
+        display:inline-block;
+        border: 2px solid #d70902;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        border-radius: 50%;
+        margin: 0 0 40px;
+        h2{
+          font-size: 40px;
+          line-height: 200px;
+          font-family: 'Gotham-Bold';
+          color: #fff;
+          margin: 0;
+        }
+      }
+      #pc2{
+        border: 2px solid #5ba1d5;
+      }
+      #pc3{
+        border: 2px solid #02c16f;
+      }
+      .points-text{
+        
+        p{
+          margin: 0 0 10px;
+          font-size: 18px;
+        }
+        h3{
+          margin: 0 0 10px;
+          font-family: 'Gotham-Bold';
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+
+.page-form{
+  background: #f8f8f8;
+  text-align: center;
+  padding: 60px 0;
+  .form-block{
+    width: 68%;
+    margin: 0 auto;
+    @media screen and (max-width: 1100px){
+      width: 90%;
+    }
+    h3.form-header{
+      width: 80%;
+      font-family: 'Gotham-Book';
+      font-size: 22px;
+      margin: 0 auto 25px;
+    }
+    #submit-form{
+      background: #fff;
+      padding: 50px;
+      box-sizing: border-box;
+      border-radius: 3px;
+      @media screen and (max-width: 650px){
+        padding: 50px 15px;
+      }
+    }
+    @media screen and (max-width: 650px){
+      width: 90%;
+    }
+  }
+}
+
+.form-ele{
+  display:flex;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+  .form-col1{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+  .form-col2{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    @media screen and (max-width: 800px){
+      width: 100%;
+      &:first-child{
+        margin: 0 0 20px;
+      }
+    }
+  }
+  label{
+    display:block;
+    width: 100%;
+    font-size: 15px;
+    margin: 0 0 10px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  input{
+    width: 100%;
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+    height: 40px;
+    font-family: 'Gotham-Book';
+    font-size: 15px;
+    line-height: 16px;
+    ::placeholder{
+      font-family: 'Gotham-Book';
+      font-size: 15px;
+    }
+  }
+  input[type="checkbox"]{
+    width: auto;
+    float: left;
+    margin-right: 10px;
+    height: auto;
+  }
+  select{
+    width: 100%;
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+    background:#eeeeee;
+    height: 40px;
+    font-family: 'Gotham-Book';
+    font-size: 15px;
+    line-height: 16px;
+    ::placeholder{
+      font-family: 'Gotham-Book';
+      font-size: 15px;
+    }
+  }
+  label.forcheck{
+    text-transform: none;
+    font-size: 13px;
+    line-height: 20px;
+  }
+  textarea{
+    width: 100%;
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+    height: 90px;
+    font-family: 'Gotham-Book';
+    font-size: 15px;
+    ::placeholder{
+      font-family: 'Gotham-Book';
+      font-size: 15px;
+    }
+  }
+  .DayPickerInput{
+    display:block;
+  }
+
+  input[type="submit"]{
+    background: $dark;
+    color:#fff;
+    font-family: 'Gotham-Bold';
+    font-size: 16px;
+    border-radius: 25px;
+    border:1px solid $dark;
+    padding: 15px 0;
+    height: auto;
+    &:hover{
+      background: #fff;
+      color:$dark;
+    }
+  }
+}
+
+// File uploader css
+#file-upload-zone{
+  #progress-wrp {
+      display:none;
+      position: relative;
+      margin: 10px;
+      text-align: left;
+      background: #fff;
+      height: 20px;
+  }
+  #progress-wrp .progress-bar{
+      height: 20px;
+      border-radius: 3px;
+      background-color: #ddd;
+      width: 0;
+  }
+  #progress-wrp .status{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      width: 100%;
+      text-align: center;
+      color: #000000;
+      font-size: 12px;
+      line-height: 20px;
+  }
+  #uplaod-btn{
+    
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #333;
+    font-size: 14px;
+    background: #ddd;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-top:20px;
+    border-radius: 3px;
+    display:none;
+  }
+  &.droped{
+    #uplaod-btn{
+      display: inline-block;
+    }
+  }
+  &.uploading{
+    #progress-wrp{
+      display:block;
+    }
+  }
+  p{
+      margin: 0 0 10px;
+  }
+  #output{
+    color: red;
+  }
+}
+
+
+
+#upload-output{
+  color: $dark;
+  font-size: 14px;
+  line-height: 18px;
+  p{
+      margin: 0 0 10px;
+  }
+}
+.msg{
+  color: $dark;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 15px;
+  &.error{
+    border: 1px solid #d70902;
+    padding-left: 50px;
+    background:url(../images/cross.png) no-repeat 15px 15px;
+  }
+  &.success{
+    border: 1px solid #00cc74;
+    padding-left: 50px;
+    background:url(../images/tick.png) no-repeat 15px 15px;
+  }
+  p{
+      margin: 0 0 10px;
+  }
+}
+
+.productBox{
+  background: #fff;
+  .productImage{
+    height: 300px;
+
+  }
+}

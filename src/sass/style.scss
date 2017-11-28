@@ -50,7 +50,6 @@ body, html{
 }
 
 body{
-    background: #f8f8f8;
     font-size: 14px;
     line-height: 1.2;
     color: #000;
@@ -225,7 +224,7 @@ footer.site-footer{
 
 .page-section{
   text-align: center;
-  padding: 90px 0;
+  padding: 90px 0 40px;
   .section-title{
     h2{
       font-size: 28px;
@@ -287,6 +286,12 @@ footer.site-footer{
   background: #f8f8f8;
   text-align: center;
   padding: 60px 0;
+  .form-header{
+    width: 60%;
+    font-size: 28px;
+    font-family: $bold;
+    margin: 0 auto 35px;
+  }
   .form-block{
     width: 68%;
     margin: 0 auto;
@@ -341,6 +346,9 @@ footer.site-footer{
     margin: 0 0 10px;
     text-align: left;
     text-transform: uppercase;
+    span{
+      font-size: 80%;
+    }
   }
   input{
     width: 100%;
@@ -470,13 +478,14 @@ footer.site-footer{
   }
   p{
       margin: 0 0 10px;
+      color: #5ba1d5;
+      font-size: 15px;
+      text-align: left;
   }
   #output{
     color: red;
   }
 }
-
-
 
 #upload-output{
   color: $dark;
@@ -513,6 +522,7 @@ footer.site-footer{
   padding: 15px 15px 0;
   box-sizing: border-box;
   margin: 0 15px 20px;
+  border: 1px solid #d9d9d9;
   .productName{
     text-align: left;
     font-family: $bold;
@@ -533,6 +543,11 @@ footer.site-footer{
 
 .product-slider-block{
   padding: 50px; 
+  .product-slider-name{
+    text-align: left;
+    margin: 0 25px 25px;
+    font-size: 30px;
+  }
   .product-slider{
     position: relative;
   }
@@ -549,6 +564,7 @@ footer.site-footer{
     transform: translateY(-50%);
     cursor: pointer;
   }
+  
   .slick-next{
     width: 21px; 
     height: 40px;
@@ -566,9 +582,8 @@ footer.site-footer{
 
 #psb1{
   background: #d9d9d9;
-  .product-slider-name{
-    text-align: left;
-    margin: 0 25px 25px;
-    font-size: 30px;
-  }
+  
+}
+#psb3{
+  background: #d9d9d9;
 }

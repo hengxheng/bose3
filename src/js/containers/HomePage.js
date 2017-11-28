@@ -1,9 +1,8 @@
-import 'react-day-picker/lib/style.css';
-
 import React from "react";
 import FileUploader from "../components/FileUploader";
 import scrollToElement from 'scroll-to-element';
 import axios from 'axios';
+import { ProductBox } from "../components/ProductBox";
 import ProductStrip from "../components/ProductStrip";
 import Slider from "react-slick";
 // import 'slick-carousel/slick/slick.css';
@@ -158,7 +157,6 @@ export default class Home extends React.Component {
                         console.log(res.data);
                         this.setState({
                             formValue: {
-                                product: "SoundTouch® 300",
                                 firstname: "",
                                 lastname: "",
                                 email:"",
@@ -258,12 +256,12 @@ export default class Home extends React.Component {
                             <div className="product-slider-name">
                                 <h3>HEADPHONES</h3>
                             </div>
-                            <div className="product-slider" id="ps1">
+                            <div className="product-slider">
                                 <ProductStrip products={ productsData.headphones } />
                             </div>
                         </div>
                     </div>
-                    <div className="product-slider-block">
+                    <div className="product-slider-block" id="psb2">
                         <div className="site-inner-big">
                             <div className="product-slider-name">
                                 <h3>SPEAKERS</h3>
@@ -273,19 +271,66 @@ export default class Home extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <div className="product-slider-block" id="psb3">
+                        <div className="site-inner-big">
+                            <div className="product-slider-name">
+                                <h3>SYSTEMS</h3>
+                            </div>
+                            <div className="product-slider">
+                                <ProductStrip products={ productsData.systems } />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-slider-block" id="psb4">
+                        <div className="site-inner-big">
+                            <div className="product-slider-name">
+                                <h3>OTHER PRODUCTS</h3>
+                            </div>
+                            <div className="product-slider">
+                                <ProductStrip products={ productsData.others } />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {/* <div id="page-form" className="page-form">
                     <div className="site-inner">
+                        <h2 className="form-header">Please enter your details to redeem FREE gift using points</h2>
                         <div className="form-block">
                            <form id="submit-form" action="#" method="post" encType="multipart/form-data">
                                 <div className="form-ele">
-                                    <label htmlFor="firstname">FULL NAME*</label>
-                                    <input id="firstname" type="text" value={this.state.formValue.firstname} name="firstname" onChange={this.handleChange}/>
-                                </div>					
+                                    <div className="form-col1">
+                                        <label htmlFor="firstname">FULL NAME*</label>
+                                        <input id="firstname" type="text" value={this.state.formValue.firstname} name="firstname" onChange={this.handleChange}/>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col2">
+                                        <label htmlFor="email">EMAIL*</label>
+                                        <input id="email" type="email" name="email" value="" />
+                                    </div>
+                                    <div className="form-col2">
+                                        <label htmlFor="phone">PHONE*</label>
+                                        <input id="phone" type="text" name="phone" value="" />
+                                    </div>
+                                </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
-                                        <label htmlFor="address">SHIPPING ADDRESS*</label>
+                                        <label htmlFor="serial">SERIAL NUMBER OF EACH SYSEM SOLD* <span>(Add , to seperate more than one)</span></label>
+                                        <input id="serial" type="text" value={this.state.formValue.firstname} name="serial" onChange={this.handleChange}/>
+                                    </div>
+                                </div>		
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <label htmlFor="address">DELIVERY ADDRESS*</label>
                                         <textarea id="address" name="address" value={ this.state.formValue.address } onChange={this.handleChange} placeholder="Address*"/>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col2">
+                                        <input id="city" type="text" name="city" value={ this.state.formValue.postcode } onChange={this.handleChange} placeholder="City/ Town"/>
+                                    </div>
+                                    <div className="form-col2">
+                                        <input id="state" type="text" name="state" value={ this.state.formValue.postcode } onChange={this.handleChange} placeholder="State*"/>
                                     </div>
                                 </div>
                                 <div className="form-ele">
@@ -302,10 +347,10 @@ export default class Home extends React.Component {
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
-                                        <label>Submit receipt*</label>
+                                        <label>SUBMIT SALES RECEIPT(S)*</label>
                                         <FileUploader doneUpdate = {this.doneUpdate}/>
                                     </div>
-                                </div>
+                                </div> 
                                 <div id="upload-output"></div>
                                 <div className="form-ele">
                                     <div className="form-col1">

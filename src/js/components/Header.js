@@ -11,7 +11,7 @@ export const Header = (props) => {
                         <img src={ headerLogo } alt="BOSE" />
                     </div>
                     <div className="header-btn">
-                        <a href="#" id="header-btn" className="btn-w">REDDEM GIFT</a>
+                        <a href="#" id="header-btn" className="btn-w">REDEEM GIFT</a>
                     </div>
                 </div>
             </div>

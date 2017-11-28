@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductBox } from "../components/ProductBox";
+import { ProductBox } from "./ProductBox";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 
@@ -8,15 +8,15 @@ export default class ProductStrip extends React.Component{
         var settings = {};
         if(this.props.products.length>4){
             settings = {
-                infinite: true,
-                speed: 2000,
+                infinite: false,
+                speed: 1500,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 arrows: true,
                 // autoplay: true,
                 responsive: [ 
                     { 
-                        breakpoint: 650, 
+                        breakpoint: 700, 
                         settings: { slidesToShow: 1 } 
                     }, 
                     { 
@@ -28,12 +28,28 @@ export default class ProductStrip extends React.Component{
         }
         else{
             settings = {
-                infinite: true,
-                speed: 2000,
-                slidesToShow: this.props.products.length,
+                infinite: false,
+                speed: 1500,
+                slidesToShow: 4,
                 slidesToScroll: 1,
                 arrows: false,
                 // autoplay: true,
+                responsive: [ 
+                    { 
+                        breakpoint: 700, 
+                        settings: { 
+                            slidesToShow: 1,
+                            arrows: true
+                        } 
+                    }, 
+                    { 
+                        breakpoint: 900, 
+                        settings: { 
+                            slidesToShow: 2,
+                            arrows: true 
+                        } 
+                    }
+                ]
             };
         }
 

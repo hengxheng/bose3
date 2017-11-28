@@ -76,3 +76,39 @@ export const speakers = [
         imageUrl: url+"/Speakers/VI_300_wireless_speakers.jpg"
     },
 ];
+
+export const systems = [
+    {
+        name: "Lifestyle® 600 home entertainment system",
+        points: 150,
+        imageUrl: url+"/Systems/Lifestyle_600.jpg"
+    },
+    {
+        name: "Lifestyle® 600 Flush home entertainment system",
+        points: 150,
+        imageUrl: url+"/Systems/Lifestyle_600_flush.jpg"
+    },
+    {
+        name: "Lifestyle® 650 home entertainment system",
+        points: 300,
+        imageUrl: url+"/Systems/Lifestyle_650.jpg"
+    },
+];
+
+export const others = [
+    {
+        name: "SoundTouch® Wireless Link adaptor",
+        points: 20,
+        imageUrl: url+"/OtherProducts/ST_Wireless_Link.jpg"
+    },
+    {
+        name: "SoundTouch 300 soundbar",
+        points: 70,
+        imageUrl: url+"/OtherProducts/ST_300_soundbar.jpg"
+    },
+    {
+        name: "Acoustimass® 300 wireless bass module",
+        points: 300,
+        imageUrl: url+"/OtherProducts/Acoustimass_300.jpg"
+    },
+];

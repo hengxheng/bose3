@@ -30,14 +30,22 @@ export default class Home extends React.Component {
                 color: "White",
                 file:""   
             },
+            uploader: 1,
             fileUploaded : false,
             selectedDays : new Date(),
             submitStatus : "",
-            formMsg : ""
+            formMsg : "",
+            files: [
+                {
+                   id: 1,
+                   value: "" 
+                }
+            ]
         }
         this.handleChange = this.handleChange.bind(this);
         this.doneUpdate = this.doneUpdate.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addMoreUploader = this.addMoreUploader.bind(this);
     }
 
     handleChange(e){
@@ -183,6 +191,17 @@ export default class Home extends React.Component {
         }
     }
 
+    addMoreUploader(e) {
+        e.preventDefault();
+        let s = this.state.files.length;
+        const files = this.state.files;
+        files.push({ id: s+1, value: ""} );
+        console.log(files);
+        this.setState({
+            files : files
+        });
+
+    }
     render() {
         return (
             <div className="product-page">
@@ -244,7 +263,6 @@ export default class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-
                 <div className="page-section">
                     <div className="site-inner">
                         <div className="section-title">
@@ -292,7 +310,7 @@ export default class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* <div id="page-form" className="page-form">
+                <div id="page-form" className="page-form">
                     <div className="site-inner">
                         <h2 className="form-header">Please enter your details to redeem FREE gift using points</h2>
                         <div className="form-block">
@@ -348,9 +366,17 @@ export default class Home extends React.Component {
                                 <div className="form-ele">
                                     <div className="form-col1">
                                         <label>SUBMIT SALES RECEIPT(S)*</label>
-                                        <FileUploader doneUpdate = {this.doneUpdate}/>
+                                        {
+                                            this.state.files.map( (i, k) => {
+                                                return <FileUploader key={k} keyid={ i.id } doneUpdate = {this.doneUpdate} />
+                                            })
+                                        }
+                                        
+                                        <div className="uploader-more">
+                                            <a href="#" className="more-btn" onClick={this.addMoreUploader}>ADD MORE +</a>
+                                        </div>
                                     </div>
-                                </div> 
+                                </div>
                                 <div id="upload-output"></div>
                                 <div className="form-ele">
                                     <div className="form-col1">
@@ -367,7 +393,7 @@ export default class Home extends React.Component {
                             </form>
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         );
     }

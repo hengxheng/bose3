@@ -1,4 +1,4 @@
-const url = "http://localhost:7080/productImages/";
+const url = "https://uat.redeembose.com/productImages/";
 
 export const headphones = [
         {

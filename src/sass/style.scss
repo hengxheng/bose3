@@ -427,8 +427,9 @@ footer.site-footer{
 }
 
 // File uploader css
-#file-upload-zone{
-  #progress-wrp {
+.file-upload-zone{
+  margin: 0 0 15px;
+  .progress-wrp {
       display:none;
       position: relative;
       margin: 10px;
@@ -436,13 +437,13 @@ footer.site-footer{
       background: #fff;
       height: 20px;
   }
-  #progress-wrp .progress-bar{
+  .progress-wrp .progress-bar{
       height: 20px;
       border-radius: 3px;
       background-color: #ddd;
       width: 0;
   }
-  #progress-wrp .status{
+  .progress-wrp .status{
       position:absolute;
       top:0;
       left:0;
@@ -453,8 +454,20 @@ footer.site-footer{
       font-size: 12px;
       line-height: 20px;
   }
-  #uplaod-btn{
-    
+  .box__input{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .box__input-text{
+    width: 80%;
+    margin: 0;
+    color: #5ba1d5;
+    font-size: 15px;
+    text-align: left;
+  }
+  .upload-btn{
     text-decoration: none;
     padding: 10px 15px;
     color: #333;
@@ -462,32 +475,42 @@ footer.site-footer{
     background: #ddd;
     text-transform: uppercase;
     font-size: 18px;
-    margin-top:20px;
     border-radius: 3px;
     display:none;
   }
+
   &.droped{
-    #uplaod-btn{
+    .upload-btn{
       display: inline-block;
     }
   }
   &.uploading{
-    #progress-wrp{
+    .progress-wrp{
       display:block;
     }
   }
-  p{
-      margin: 0 0 10px;
-      color: #5ba1d5;
-      font-size: 15px;
-      text-align: left;
-  }
-  #output{
+  .output{
     color: red;
   }
 }
 
-#upload-output{
+.uploader-more{
+  padding: 10px 0;
+  text-align: right;
+}
+.more-btn{
+  display:inline-block;
+  text-decoration: none;
+  padding: 10px 15px;
+  color: #333;
+  font-size: 13px;
+  background: #ddd;
+  text-transform: uppercase;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+.upload-output{
   color: $dark;
   font-size: 14px;
   line-height: 18px;

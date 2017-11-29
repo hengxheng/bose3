@@ -82,7 +82,6 @@ export default class FileUploader extends React.Component {
         let DropAreaStyle = {
             outline: "1px dashed #888",
             width: "100%",
-            height: "90px",
             boxSizing: "border-box",
             padding: "30px",
             fontSize: "18px",
@@ -94,17 +93,18 @@ export default class FileUploader extends React.Component {
         };
             
         return (
-            <div id="file-upload-zone" className={ this.state.uploading? "uploading" : (this.state.droped?"droped":"waiting")}>
-                <Dropzone id="file-upload-area" style={ DropAreaStyle } accept="image/jpeg, image/png, application/pdf" maxSize={5097152} onDrop={this.onDrop} onDropRejected={this.onDropRejected}>
+            <div id= {"file-upload-zone-"+this.props.keyid } className={ "file-upload-zone "+(this.state.uploading? "uploading" :(this.state.droped?"droped":"waiting"))}>
+                <Dropzone className="file-upload-area" style={ DropAreaStyle } accept="image/jpeg, image/png, application/pdf" maxSize={5097152} onDrop={this.onDrop} onDropRejected={this.onDropRejected}>
                     <div className="box__input">
-                        <p>{ this.state.droped? (Array.isArray(this.state.file)? this.state.file[0].name : ""): "Upload pdf or image (any format)"}</p>
+                        <div className="box__input-text">{ this.state.droped? (Array.isArray(this.state.file)? this.state.file[0].name : ""): "Upload pdf or image (any format)"}</div>
+                        <a href="#" className="upload-btn" onClick={ (e) => { this.onUpload(e) } }>UPLOAD</a>
                     </div>
-                    <div id="progress-wrp">
+                    <div className="progress-wrp">
                         <div className="progress-bar" style={ progressWidth }></div>
                         <div className="status">{ this.state.percentCompleted }%</div>
                     </div>
-                    <div id="output">{ this.state.outputMessage }</div>
-                    <a href="#" id="uplaod-btn" onClick={ (e) => { this.onUpload(e) } }>UPLOAD</a>
+                    <div className="output">{ this.state.outputMessage }</div>
+                    
                 </Dropzone>
             </div>
         );

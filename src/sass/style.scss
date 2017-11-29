@@ -295,6 +295,8 @@ footer.site-footer{
   .form-block{
     width: 68%;
     margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 0 5px 5px #d8d8d8;
     @media screen and (max-width: 1100px){
       width: 90%;
     }
@@ -609,4 +611,118 @@ footer.site-footer{
 }
 #psb3{
   background: #d9d9d9;
+}
+
+.giftBlock{
+  width: 100%;
+  margin: 0 0 25px;
+  border: 1px solid #d9d9d9;
+  .giftBlock-name{
+    font-size: 15px;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 15px;
+    background: #eeeeee;
+    text-align: left;
+    cursor: pointer;
+    &:after{
+      content:"-";
+      display:block;
+      float:right;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+      line-height: 23px;
+      margin-top: -2px;
+    }
+  }
+  .giftBlock-inner{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+    overflow: hidden;
+    .giftBox{
+      width: 48%;
+      box-sizing: border-box;
+      padding: 15px;
+      .giftBox-inner{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .giftBoxImage{
+          width: 35%;
+          border: 1px solid #eeeeee;
+          img{
+            width: 100%;
+          }
+        }
+        .giftBoxText{
+          width: 58%;
+          text-align: left;
+          display:flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          flex-direction: column;
+          .giftBoxName{
+            font-family: $bold;
+            font-size: 14px;
+            margin: 0 0 5px;
+          }
+          .giftBoxPoint{
+            font-size: 14px;
+            margin: 0 0 15px;
+          }
+          .giftBoxCTA{
+            margin-top: auto;
+          }
+          .giftBox-btn{
+            display: inline-block;
+            padding: 5px 25px;
+            font-family: 'Gotham-Bold';
+            font-weight: bold;
+            font-size: 12px;
+            color: #242424;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: opacity 0.3s ease-out;
+            background-clip: padding-box;
+            border: 1px solid #242424;
+            &:hover{
+              color: #f8f8f8;
+              text-decoration: none;
+              background: #242424;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.opened{
+    .giftBlock-name{
+      &:after{
+        content:"+";
+        font-size: 19px;
+        line-height: 27px;
+      }
+    }
+    .giftBlock-inner{
+      max-height: 700px;
+      transition: all 0.5s ease-in;
+    }
+  }
+  &.closed{
+    .giftBlock-inner{
+      max-height: 0;
+      padding:0;
+      transition: all 0.5s ease-in;
+    }
+  }
 }

@@ -4,6 +4,7 @@ import scrollToElement from 'scroll-to-element';
 import axios from 'axios';
 import { ProductBox } from "../components/ProductBox";
 import ProductStrip from "../components/ProductStrip";
+import GiftBlock from "../components/GiftBlock";
 import Slider from "react-slick";
 // import 'slick-carousel/slick/slick.css';
 import * as productsData from "../productData";
@@ -30,7 +31,6 @@ export default class Home extends React.Component {
                 color: "White",
                 file:""   
             },
-            uploader: 1,
             fileUploaded : false,
             selectedDays : new Date(),
             submitStatus : "",
@@ -376,8 +376,19 @@ export default class Home extends React.Component {
                                             <a href="#" className="more-btn" onClick={this.addMoreUploader}>ADD MORE +</a>
                                         </div>
                                     </div>
+                                    <div id="upload-output"></div>
                                 </div>
-                                <div id="upload-output"></div>
+                                <div className="form-ele">
+                                    <GiftBlock name="Headphones" show={true} products={ productsData.headphones } />
+                                    <GiftBlock name="Speakers" products={ productsData.speakers } />
+                                    <GiftBlock name="Systems" products={ productsData.systems } />
+                                    <GiftBlock name="Other products" products={ productsData.others } />
+                                </div>
+                                <div className="form-ele">
+                                    <div className="checkbox-wrapper">
+                                        <label htmlFor="newsletter"><input type="checkbox" id="newsletter" name="newsletter"/><span>Yes, I'd like email updates regarding new products and promotions from Bose®.</span></label>
+                                    </div>
+                                </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
                                         <input type="submit" value="SUBMIT" id="submit-btn" />

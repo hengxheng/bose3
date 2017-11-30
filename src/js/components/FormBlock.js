@@ -9,22 +9,18 @@ class FormBlock extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            gifts: [],
             formValue: {
-                firstname: "",
-                lastname: "",
+                fullname: "",
                 email:"",
                 phone:"",
-                serialNo: "",
-                date: "",
+                serial: "",
                 address: "",
                 city:"",
                 state:"",
                 postcode:"",
                 country:"",
                 newsletter: false,
-                color: "White",
-                file:""   
+                file:[]
             },
             fileUploaded : false,
             submitStatus : "",
@@ -36,12 +32,12 @@ class FormBlock extends React.Component{
                 }
             ]
         }
-
-        
-        this.handleChange = this.handleChange.bind(this);
-        this.doneUpdate = this.doneUpdate.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentDidMount(){
+        console.log(this.props);
+    }
+
 
     handleChange(e){
         const target = e.target;
@@ -84,18 +80,16 @@ class FormBlock extends React.Component{
         let valid = true;
         let errorMsg = [];
 
+        console.log(this.props.gifts);
+
         //form validation
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
-        let checkSerial = /^(074302|074113).*$/;
 
-        if(data.firstname == ""){
+
+        if(data.fullname == ""){
             valid = false;
-            errorMsg.push("First name is required.");
-        }
-        if(data.lastname == ""){
-            valid = false;
-            errorMsg.push("Last name is required.");
+            errorMsg.push("Name is required.");
         }
         if(!checkEmail.test(data.email) || data.email == ""){
             valid = false;
@@ -105,9 +99,9 @@ class FormBlock extends React.Component{
             valid = false;
             errorMsg.push("Invalid Phone");
         }
-        if(!checkSerial.test(data.serialNo) || data.serialNo == ""){
+        if(data.serial == ""){
             valid = false;
-            errorMsg.push("Invalid Serial Number");
+            errorMsg.push("Serial Number is required");
         }
         if(data.date == ""){
             valid = false;
@@ -133,10 +127,10 @@ class FormBlock extends React.Component{
             valid = false;
             errorMsg.push("Country is required.");
         }
-        if(data.file == ""){
-            valid = false;
-            errorMsg.push("Please upload the receipt before submitting the form.");
-        }
+        // if(data.files == ""){
+        //     valid = false;
+        //     errorMsg.push("Please upload the receipt before submitting the form.");
+        // }
 
         if(!valid){
             let error = "";
@@ -148,95 +142,99 @@ class FormBlock extends React.Component{
                 formMsg: error
             });
         }
-        else{
-            this.setState({
-                submitStatus: "",
-                formMsg: ""
-            });
+        // else{
+        //     this.setState({
+        //         submitStatus: "",
+        //         formMsg: ""
+        //     });
 
-            const submited_url = "/server/form.php";
-            const params = Object.keys(data).map( (k) => {
-                return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-            }).join('&');
+        //     const submited_url = "/server/form.php";
+        //     const params = Object.keys(data).map( (k) => {
+        //         return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+        //     }).join('&');
 
-            axios.post(submited_url, params)
-                .then( res => {
-                        console.log(res.data);
-                        this.setState({
-                            formValue: {
-                                firstname: "",
-                                lastname: "",
-                                email:"",
-                                phone:"",
-                                serialNo: "",
-                                date: "",
-                                address: "",
-                                city:"",
-                                state:"",
-                                postcode:"",
-                                country:"",
-                                newsletter: false,
-                                color: "White",
-                                file:""   
-                            },
-                            submitStatus: "success",
-                            formMsg: "<p>Thank you for submitting a request to redeem a free product. You will receive your redeemed item within the next 30 days.</p>"
-                        });
-                    }
-                )
-                .catch(error => {
-                    console.log(error)
-                });
-        }
+        //     axios.post(submited_url, params)
+        //         .then( res => {
+        //                 console.log(res.data);
+        //                 this.setState({
+        //                     formValue: {
+        //                         firstname: "",
+        //                         lastname: "",
+        //                         email:"",
+        //                         phone:"",
+        //                         serialNo: "",
+        //                         date: "",
+        //                         address: "",
+        //                         city:"",
+        //                         state:"",
+        //                         postcode:"",
+        //                         country:"",
+        //                         newsletter: false,
+        //                         color: "White",
+        //                         file:""   
+        //                     },
+        //                     submitStatus: "success",
+        //                     formMsg: "<p>Thank you for submitting a request to redeem a free product. You will receive your redeemed item within the next 30 days.</p>"
+        //                 });
+        //             }
+        //         )
+        //         .catch(error => {
+        //             console.log(error)
+        //         });
+        // }
     }
 
 
     render(){
+        
+            
+        
         return (
             <div className="form-block">
-            <form id="submit-form" action="#" method="post" encType="multipart/form-data">
+            <form id="submit-form" action="#" method="post" encType="multipart/form-data" onSubmit = { (e) => { this.handleSubmit(e) } }>
                  <div className="form-ele">
                      <div className="form-col1">
-                         <label htmlFor="firstname">FULL NAME*</label>
-                         <input id="firstname" type="text" value={this.state.formValue.firstname} name="firstname" onChange={this.handleChange}/>
+                         <label htmlFor="fullname">FULL NAME*</label>
+                         <input id="fullname" type="text" value={this.state.formValue.fullname} name="fullname" 
+                         onChange={ (e) => this.handleChange(e) }/>
                      </div>
                  </div>
                  <div className="form-ele">
                      <div className="form-col2">
                          <label htmlFor="email">EMAIL*</label>
-                         <input id="email" type="email" name="email" value="" />
+                         <input id="email" type="email" name="email" value={ this.state.formValue.email }  onChange={ (e) => this.handleChange(e) } />
                      </div>
                      <div className="form-col2">
                          <label htmlFor="phone">PHONE*</label>
-                         <input id="phone" type="text" name="phone" value="" />
+                         <input id="phone" type="text" name="phone" value={ this.state.formValue.phone } onChange={ (e) => this.handleChange(e) } />
                      </div>
                  </div>
                  <div className="form-ele">
                      <div className="form-col1">
                          <label htmlFor="serial">SERIAL NUMBER OF EACH SYSEM SOLD* <span>(Add , to seperate more than one)</span></label>
-                         <input id="serial" type="text" value={this.state.formValue.firstname} name="serial" onChange={this.handleChange}/>
+                         <input id="serial" type="text" value={this.state.formValue.serial} name="serial"  onChange={ (e) => this.handleChange(e) }/>
                      </div>
                  </div>		
                  <div className="form-ele">
                      <div className="form-col1">
                          <label htmlFor="address">DELIVERY ADDRESS*</label>
-                         <textarea id="address" name="address" value={ this.state.formValue.address } onChange={this.handleChange} placeholder="Address*"/>
+                         <textarea id="address" name="address" value={ this.state.formValue.address }  onChange={ (e) => this.handleChange(e) }placeholder="Address*"/>
                      </div>
                  </div>
                  <div className="form-ele">
                      <div className="form-col2">
-                         <input id="city" type="text" name="city" value={ this.state.formValue.postcode } onChange={this.handleChange} placeholder="City/ Town"/>
+                         <input id="city" type="text" name="city" value={ this.state.formValue.city }  onChange={ (e) => this.handleChange(e) }placeholder="City/ Town"/>
                      </div>
                      <div className="form-col2">
-                         <input id="state" type="text" name="state" value={ this.state.formValue.postcode } onChange={this.handleChange} placeholder="State*"/>
+                         <input id="state" type="text" name="state" value={ this.state.formValue.state }  onChange={ (e) => this.handleChange(e) } placeholder="State*"/>
                      </div>
                  </div>
                  <div className="form-ele">
                      <div className="form-col2">
-                         <input id="postcode" type="text" name="postcode" value={ this.state.formValue.postcode } onChange={this.handleChange} placeholder="Postcode*"/>
+                         <input id="postcode" type="text" name="postcode" value={ this.state.formValue.postcode }  onChange={ (e) => this.handleChange(e) } placeholder="Postcode*"/>
                      </div>
                      <div className="form-col2">
-                         <select id="country" name="country" value={ this.state.formValue.country } onChange={this.handleChange}>
+                         <select id="country" name="country" value={ this.state.formValue.country }  onChange={ (e) => this.handleChange(e) }>
                              <option value="">Country*</option>  
                              <option value="AU">Australia</option>
                              <option value="NZ">New Zealand</option>
@@ -266,7 +264,7 @@ class FormBlock extends React.Component{
                  </div>
                  <div className="form-ele">
                      <div className="checkbox-wrapper">
-                         <label htmlFor="newsletter"><input type="checkbox" id="newsletter" name="newsletter"/><span>Yes, I'd like email updates regarding new products and promotions from Bose®.</span></label>
+                         <label htmlFor="newsletter"><input type="checkbox" id="newsletter" name="newsletter"  onChange={ (e) => this.handleChange(e) }/><span>Yes, I'd like email updates regarding new products and promotions from Bose®.</span></label>
                      </div>
                  </div>
                  <div className="form-ele">
@@ -289,7 +287,7 @@ class FormBlock extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        gifts : state.selectedGifts
+       gifts : state.GiftReducer.selectedGifts
     };
 }
 

@@ -2,7 +2,7 @@ const url = "https://uat.redeembose.com/productImages/";
 
 export const headphones = [
         {
-            name: "SoundSport® in-ear headphones",
+            name: "SoundSport® in-ear Headphones",
             points: 10,
             imageUrl: url+"/Headphones/SSinear_headphone.jpg"
         },
@@ -27,8 +27,8 @@ export const headphones = [
             imageUrl: url+"/Headphones/Quiet_Control_30_wireless.jpg"
         },
         {
-            name: "QC20 Noise Cancelling",
-            points : 50,
+            name: "QC® 20 Noise Cancelling",
+            points : 30,
             imageUrl: url+"/Headphones/QC20noise_cancelling.jpg"
         }
 ];
@@ -36,43 +36,43 @@ export const headphones = [
 
 export const speakers = [
     {
-        name: "SL Micro Bluetooth",
-        points: 10,
+        name: "SoundLink® Micro Bluetooth Speaker",
+        points: 20,
         imageUrl: url+"/Speakers/SL_Micro_Bluetooth.jpg"
     },
     {
-        name: "SL Color Bluetooth II",
-        points: 10,
+        name: "SoundLink® Color Bluetooth® speaker II",
+        points: 20,
         imageUrl: url+"/Speakers/SL_Color_Bluetooth_II.jpg"
     },
     {
-        name: "SL Color Bluetooth II",
-        points: 10,
+        name: "SoundLink® Revolve Bluetooth® speaker",
+        points: 40,
         imageUrl: url+"/Speakers/SL_revolve.jpg"
     },
     {
-        name: "SL Color Bluetooth II",
+        name: "SoundLink® Revolve+ Bluetooth® speaker",
         points: 10,
         imageUrl: url+"/Speakers/SL_Revolve_bluetooth.jpg"
     },
     {
-        name: "SL Color Bluetooth II",
+        name: "SoundTouch 10 wireless speaker",
         points: 10,
         imageUrl: url+"/Speakers/ST_10_wireless.jpg"
     },
     {
-        name: "SL Color Bluetooth II",
+        name: "SoundTouch® 20 Wi-Fi system",
         points: 10,
         imageUrl: url+"/Speakers/ST20_wifi_system.jpg"
     },
     {
-        name: "SL Color Bluetooth II",
+        name: "SoundTouch 30 wireless speaker",
         points: 10,
         imageUrl: url+"/Speakers/ST30_wireless_speaker.jpg"
     },
     {
-        name: "SL Color Bluetooth II",
-        points: 10,
+        name: "Virtually Invisible® 300 wireless surround speakers",
+        points: 30,
         imageUrl: url+"/Speakers/VI_300_wireless_speakers.jpg"
     },
 ];
@@ -108,7 +108,7 @@ export const others = [
     },
     {
         name: "Acoustimass® 300 wireless bass module",
-        points: 300,
+        points: 70,
         imageUrl: url+"/OtherProducts/Acoustimass_300.jpg"
     },
 ];

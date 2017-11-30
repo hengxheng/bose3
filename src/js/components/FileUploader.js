@@ -69,7 +69,7 @@ export default class FileUploader extends React.Component {
             axios.post(file_url, formFile, config)
                 .then(res => {
                     console.log(res);
-                    this.props.doneUpdate(res.data);
+                    this.props.doneUpdate(this.props.keyid, res.data);
                 })
                 .catch(error => {
                     console.log(error)
@@ -79,22 +79,13 @@ export default class FileUploader extends React.Component {
     }
 
     render(){
-        let DropAreaStyle = {
-            outline: "1px dashed #888",
-            width: "100%",
-            boxSizing: "border-box",
-            padding: "30px",
-            fontSize: "18px",
-            cursor: "pointer"
-        }
-
         let progressWidth = {
             width: this.state.percentCompleted+"%"
         };
             
         return (
             <div id= {"file-upload-zone-"+this.props.keyid } className={ "file-upload-zone "+(this.state.uploading? "uploading" :(this.state.droped?"droped":"waiting"))}>
-                <Dropzone className="file-upload-area" style={ DropAreaStyle } accept="image/jpeg, image/png, application/pdf" maxSize={5097152} onDrop={this.onDrop} onDropRejected={this.onDropRejected}>
+                <Dropzone className="file-upload-area" accept="image/jpeg, image/png, application/pdf" maxSize={5097152} onDrop={this.onDrop} onDropRejected={this.onDropRejected}>
                     <div className="box__input">
                         <div className="box__input-text">{ this.state.droped? (Array.isArray(this.state.file)? this.state.file[0].name : ""): "Upload pdf or image (any format)"}</div>
                         <a href="#" className="upload-btn" onClick={ (e) => { this.onUpload(e) } }>UPLOAD</a>
@@ -104,7 +95,6 @@ export default class FileUploader extends React.Component {
                         <div className="status">{ this.state.percentCompleted }%</div>
                     </div>
                     <div className="output">{ this.state.outputMessage }</div>
-                    
                 </Dropzone>
             </div>
         );

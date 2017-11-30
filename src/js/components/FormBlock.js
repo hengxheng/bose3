@@ -19,8 +19,7 @@ class FormBlock extends React.Component{
                 state:"",
                 postcode:"",
                 country:"",
-                newsletter: false,
-                file:[]
+                newsletter: false
             },
             fileUploaded : false,
             submitStatus : "",
@@ -28,14 +27,14 @@ class FormBlock extends React.Component{
             files: [
                 {
                    id: 1,
-                   value: "" 
+                   fileName: "" 
                 }
             ]
         }
     }
 
     componentDidMount(){
-        console.log(this.props);
+
     }
 
 
@@ -51,12 +50,12 @@ class FormBlock extends React.Component{
     }
     
 
-    doneUpdate(fileName){
+    doneUpdate(id, fileName){
         if(fileName != "" && (typeof fileName != "undefined")){
-            const old_state = this.state.formValue;
-            Object.assign(old_state, { file: fileName });
+            const files = this.state.files;
+            Object.assign(files, { id: id, fileName: fileName });
             this.setState({
-                formValue: old_state
+                files: files
             });
         }
     }
@@ -81,52 +80,56 @@ class FormBlock extends React.Component{
         let errorMsg = [];
 
         console.log(this.props.gifts);
-
+        console.log(data);
+        console.log(this.state.files);
         //form validation
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
 
 
-        if(data.fullname == ""){
-            valid = false;
-            errorMsg.push("Name is required.");
-        }
-        if(!checkEmail.test(data.email) || data.email == ""){
-            valid = false;
-            errorMsg.push("Invalid Email");
-        }
-        if(!checkPhone.test(data.phone) || data.phone == ""){
-            valid = false;
-            errorMsg.push("Invalid Phone");
-        }
-        if(data.serial == ""){
-            valid = false;
-            errorMsg.push("Serial Number is required");
-        }
-        if(data.date == ""){
-            valid = false;
-            errorMsg.push("Purchased date is required");
-        }
-        if(data.address == ""){
-            valid = false;
-            errorMsg.push("Address is required.");
-        }
-        if(data.city == ""){
-            valid = false;
-            errorMsg.push("City is required.");
-        }
-        if(data.state == ""){
-            valid = false;
-            errorMsg.push("State is required.");
-        }
-        if(data.postcode == ""){
-            valid = false;
-            errorMsg.push("Postcode is required.");
-        }
-        if(data.country == ""){
-            valid = false;
-            errorMsg.push("Country is required.");
-        }
+        // if(data.fullname == ""){
+        //     valid = false;
+        //     errorMsg.push("Name is required.");
+        // }
+        // if(!checkEmail.test(data.email) || data.email == ""){
+        //     valid = false;
+        //     errorMsg.push("Invalid Email");
+        // }
+        // if(!checkPhone.test(data.phone) || data.phone == ""){
+        //     valid = false;
+        //     errorMsg.push("Invalid Phone");
+        // }
+        // if(data.serial == ""){
+        //     valid = false;
+        //     errorMsg.push("Serial Number is required");
+        // }
+        // if(data.date == ""){
+        //     valid = false;
+        //     errorMsg.push("Purchased date is required");
+        // }
+        // if(data.address == ""){
+        //     valid = false;
+        //     errorMsg.push("Address is required.");
+        // }
+        // if(data.city == ""){
+        //     valid = false;
+        //     errorMsg.push("City is required.");
+        // }
+        // if(data.state == ""){
+        //     valid = false;
+        //     errorMsg.push("State is required.");
+        // }
+        // if(data.postcode == ""){
+        //     valid = false;
+        //     errorMsg.push("Postcode is required.");
+        // }
+        // if(data.country == ""){
+        //     valid = false;
+        //     errorMsg.push("Country is required.");
+        // }
+
+
+
         // if(data.files == ""){
         //     valid = false;
         //     errorMsg.push("Please upload the receipt before submitting the form.");

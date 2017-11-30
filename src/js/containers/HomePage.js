@@ -60,7 +60,7 @@ export default class Home extends React.Component {
                                         <div className="points-text">
                                             <p>for every</p>
                                             <h3>Lifestyle® 600</h3>
-                                            <p>(Fluch Black or White)</p>
+                                            <p>(Flush Black or White)</p>
                                             <p>you sell</p>
                                         </div>
                                     </div>

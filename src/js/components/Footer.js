@@ -16,7 +16,7 @@ export const Footer = (props) => {
                     </div>
                     <div className="terms">
                         
-                        <p><a href="#">Terms & Conditions</a></p>
+                        <p><a href="/Bose.pdf" target="_blank">Terms & Conditions</a></p>
                     </div>
                 </div>
             </div>

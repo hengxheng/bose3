@@ -10,20 +10,16 @@
     // sql to create table
     $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-            firstname VARCHAR(50),
-            lastname VARCHAR(50),
-            phone VARCHAR(50),
+            fullname VARCHAR(50),
             email VARCHAR(50),
-            serialNo VARCHAR(10),
-            purchased_product VARCHAR(50),
-            purchased_date VARCHAR(50),
+            phone VARCHAR(50),
+            serialNo VARCHAR(200),
             address1 VARCHAR(150),
             city VARCHAR(50),
             state VARCHAR(50),
             postcode VARCHAR(50),
             country VARCHAR(10),
-            color VARCHAR(50),
-            upload_file VARCHAR(100),
+            products TEXT,
             newsletter VARCHAR(10),
             created_date VARCHAR(50)
         )";
@@ -33,5 +29,18 @@
         echo "Error creating table: " . $conn->error;
     }
 
+
+    $sql_files = "CREATE TABLE IF NOT EXISTS entry_files (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+        entry_id INT(6),
+        file_name VARCHAR(150)
+    )";
+
+    if ($conn->query( $sql_files) === TRUE) {
+        echo "Table entry_files created successfully";
+    } else {
+        echo "Error creating table: " . $conn->error;
+    }
+    
     $conn->close();
 ?>

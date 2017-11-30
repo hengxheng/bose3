@@ -31,6 +31,7 @@ class FormBlock extends React.Component{
                 }
             ]
         }
+        this.doneUpdate = this.doneUpdate.bind(this);
     }
 
     componentDidMount(){
@@ -53,7 +54,12 @@ class FormBlock extends React.Component{
     doneUpdate(id, fileName){
         if(fileName != "" && (typeof fileName != "undefined")){
             const files = this.state.files;
-            Object.assign(files, { id: id, fileName: fileName });
+            files.map( (i, k) => {
+                if(i.id == id){
+                    i.fileName = fileName;
+                }
+            });
+
             this.setState({
                 files: files
             });
@@ -64,8 +70,7 @@ class FormBlock extends React.Component{
         e.preventDefault();
         let s = this.state.files.length;
         const files = this.state.files;
-        files.push({ id: s+1, value: ""} );
-        console.log(files);
+        files.push({ id: s+1, fileName: ""} );
         this.setState({
             files : files
         });

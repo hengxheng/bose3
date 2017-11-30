@@ -54,8 +54,8 @@ export default class FileUploader extends React.Component {
             formFile.append('uploadfile', f, f.name);
 
             //server upload progress url
-            // const file_url = document.location.origin+"/bose_landing/server/ajax-file-upload.php";
-            const file_url = "/server/ajax-file-upload.php";
+            const file_url = document.location.origin+"/bose4/server/ajax-file-upload.php";
+            // const file_url = "/server/ajax-file-upload.php";
             const config = {
                 onUploadProgress: (progressEvent) => {
                     let percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
@@ -85,7 +85,9 @@ export default class FileUploader extends React.Component {
             
         return (
             <div id= {"file-upload-zone-"+this.props.keyid } className={ "file-upload-zone "+(this.state.uploading? "uploading" :(this.state.droped?"droped":"waiting"))}>
-                <Dropzone className="file-upload-area" accept="image/jpeg, image/png, application/pdf" maxSize={5097152} onDrop={this.onDrop} onDropRejected={this.onDropRejected}>
+                <Dropzone className="file-upload-area" accept="image/jpeg, image/png, application/pdf" maxSize={5097152} 
+                onDrop={this.onDrop} 
+                onDropRejected={this.onDropRejected}>
                     <div className="box__input">
                         <div className="box__input-text">{ this.state.droped? (Array.isArray(this.state.file)? this.state.file[0].name : ""): "Upload pdf or image (any format)"}</div>
                         <a href="#" className="upload-btn" onClick={ (e) => { this.onUpload(e) } }>UPLOAD</a>

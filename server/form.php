@@ -12,39 +12,38 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	// $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
-	// $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
-	// $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-	// $email = mysqli_real_escape_string($conn, $_POST['email']);
-	// $serialNo = mysqli_real_escape_string($conn, $_POST['serialNo']);
-	// $product = mysqli_real_escape_string($conn, $_POST['product']);
-	// $date = mysqli_real_escape_string($conn, $_POST['date']);
-	// $address1 = mysqli_real_escape_string($conn, $_POST['address']);
-	// $city = mysqli_real_escape_string($conn, $_POST['city']);
-	// $state = mysqli_real_escape_string($conn, $_POST['state']);
-	// $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
-	// $color = mysqli_real_escape_string($conn, $_POST['color']);
-	// $country = mysqli_real_escape_string($conn, $_POST['country']);
-	// $file = mysqli_real_escape_string($conn, $_POST['file']);
-	// $newsletter = mysqli_real_escape_string($conn, $_POST['newsletter']);
-	// if($newsletter=="true"){
-	// 	$newsletter = "on";
-	// }
-	// else{
-	// 	$newsletter = "off";
-	// }
-	// $created_date = date("Y-m-d");
+	$fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+	$phone = mysqli_real_escape_string($conn, $_POST['phone']);
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$serialNo = mysqli_real_escape_string($conn, $_POST['serial']);
+	$address1 = mysqli_real_escape_string($conn, $_POST['address']);
+	$city = mysqli_real_escape_string($conn, $_POST['city']);
+	$state = mysqli_real_escape_string($conn, $_POST['state']);
+	$postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
+	$country = mysqli_real_escape_string($conn, $_POST['country']);
+	$products = mysqli_real_escape_string($conn, $_POST['gifts']);
+	$files = mysqli_real_escape_string($conn, $_POST['files']);
+	$newsletter = mysqli_real_escape_string($conn, $_POST['newsletter']);
+	if($newsletter=="true"){
+		$newsletter = "on";
+	}
+	else{
+		$newsletter = "off";
+	}
+	$created_date = date("Y-m-d");
 
-	// $sql = "INSERT INTO {$table_name} (firstname, lastname, email, phone, serialNo, purchased_product, purchased_date, address1, city, state, postcode, country, color, upload_file, newsletter, created_date) VALUES 
-	// ('{$firstname}', '{$lastname}', '{$email}', '{$phone}', '{$serialNo}', '{$product}', '{$date}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$color}', '{$file}', '{$newsletter}', '{$created_date}')";
+	
 
-	// if ($conn->query($sql) === TRUE) {
+	$sql = "INSERT INTO {$table_name} (fullname, email, phone, serialNo, address1, city, state, postcode, country, products, files, newsletter, created_date) VALUES 
+	('{$fullname}', '{$email}', '{$phone}', '{$serialNo}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$products}', '{$files}', '{$newsletter}', '{$created_date}')";
+
+	if ($conn->query($sql) === TRUE) {
 	    
-	// } else {
-	//     echo "Error: " . $sql . "<br>" . $conn->error;
-	// }
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
 
-	// $conn->close();
+	$conn->close();
 
 
 	header('Content-type: application/json');

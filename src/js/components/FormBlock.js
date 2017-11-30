@@ -4,6 +4,7 @@ import GiftBlock from "./GiftBlock";
 import * as productsData from "../productData";
 import { connect } from 'react-redux';
 import { error } from "util";
+import axios from "axios";
 
 
 class FormBlock extends React.Component{
@@ -89,46 +90,46 @@ class FormBlock extends React.Component{
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
 
-        // if(data.fullname == ""){
-        //     valid = false;
-        //     errorMsg.push("Name is required.");
-        // }
-        // if(!checkEmail.test(data.email) || data.email == ""){
-        //     valid = false;
-        //     errorMsg.push("Invalid Email");
-        // }
-        // if(!checkPhone.test(data.phone) || data.phone == ""){
-        //     valid = false;
-        //     errorMsg.push("Invalid Phone");
-        // }
-        // if(data.serial == ""){
-        //     valid = false;
-        //     errorMsg.push("Serial Number is required");
-        // }
-        // if(data.date == ""){
-        //     valid = false;
-        //     errorMsg.push("Purchased date is required");
-        // }
-        // if(data.address == ""){
-        //     valid = false;
-        //     errorMsg.push("Address is required.");
-        // }
-        // if(data.city == ""){
-        //     valid = false;
-        //     errorMsg.push("City is required.");
-        // }
-        // if(data.state == ""){
-        //     valid = false;
-        //     errorMsg.push("State is required.");
-        // }
-        // if(data.postcode == ""){
-        //     valid = false;
-        //     errorMsg.push("Postcode is required.");
-        // }
-        // if(data.country == ""){
-        //     valid = false;
-        //     errorMsg.push("Country is required.");
-        // }
+        if(data.fullname == ""){
+            valid = false;
+            errorMsg.push("Name is required.");
+        }
+        if(!checkEmail.test(data.email) || data.email == ""){
+            valid = false;
+            errorMsg.push("Invalid Email");
+        }
+        if(!checkPhone.test(data.phone) || data.phone == ""){
+            valid = false;
+            errorMsg.push("Invalid Phone");
+        }
+        if(data.serial == ""){
+            valid = false;
+            errorMsg.push("Serial Number is required");
+        }
+        if(data.date == ""){
+            valid = false;
+            errorMsg.push("Purchased date is required");
+        }
+        if(data.address == ""){
+            valid = false;
+            errorMsg.push("Address is required.");
+        }
+        if(data.city == ""){
+            valid = false;
+            errorMsg.push("City is required.");
+        }
+        if(data.state == ""){
+            valid = false;
+            errorMsg.push("State is required.");
+        }
+        if(data.postcode == ""){
+            valid = false;
+            errorMsg.push("Postcode is required.");
+        }
+        if(data.country == ""){
+            valid = false;
+            errorMsg.push("Country is required.");
+        }
         if(gifts.length <= 0){
             valid = false;
             errorMsg.push("Please select your redeem product");
@@ -168,35 +169,33 @@ class FormBlock extends React.Component{
 
             data.files = files;
             data.gifts = gifts;
-            console.log(data);
 
-            const submited_url = "/server/form.php";
-            // const params = Object.keys(data).map( (k) => {
-            //     return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-            // }).join('&');
+            // const submited_url = "/server/form.php";
+            const submited_url = document.location.origin+"/bose4/server/form.php";
+            const params = Object.keys(data).map( (k) => {
+                return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            }).join('&');
 
-            const params = JSON.stringify(data);
+            // const params = JSON.stringify(data);
 
             axios.post(submited_url, params)
                 .then( res => {
                         console.log(res.data);
                         this.setState({
-        //                     formValue: {
-        //                         firstname: "",
-        //                         lastname: "",
-        //                         email:"",
-        //                         phone:"",
-        //                         serialNo: "",
-        //                         date: "",
-        //                         address: "",
-        //                         city:"",
-        //                         state:"",
-        //                         postcode:"",
-        //                         country:"",
-        //                         newsletter: false, 
-        //                     },
+                            formValue: {
+                                fullname: "",
+                                email:"",
+                                phone:"",
+                                serial: "",
+                                address: "",
+                                city:"",
+                                state:"",
+                                postcode:"",
+                                country:"",
+                                newsletter: false
+                            },
                             submitStatus: "success",
-                            formMsg: "<p>Thank you for submitting a request to redeem a free product. You will receive your redeemed item within the next 30 days.</p>"
+                            formMsg: "<p>Thank you for submitting a request to redeem FREE product(s). We will be in touch shortly.</p>"
                         });
                     }
                 )

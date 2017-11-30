@@ -20,6 +20,7 @@
             postcode VARCHAR(50),
             country VARCHAR(10),
             products TEXT,
+            files TEXT,
             newsletter VARCHAR(10),
             created_date VARCHAR(50)
         )";
@@ -29,18 +30,6 @@
         echo "Error creating table: " . $conn->error;
     }
 
-
-    $sql_files = "CREATE TABLE IF NOT EXISTS entry_files (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-        entry_id INT(6),
-        file_name VARCHAR(150)
-    )";
-
-    if ($conn->query( $sql_files) === TRUE) {
-        echo "Table entry_files created successfully";
-    } else {
-        echo "Error creating table: " . $conn->error;
-    }
     
     $conn->close();
 ?>

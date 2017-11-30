@@ -121,7 +121,11 @@
 				?>	
 					<tr>
 						<?php foreach ($records[$i] as $rk => $rv): ?>
-							<td class="<?php echo $rk; ?>"><?php echo $records[$i][$rk]; ?></td>
+							<?php if($rk == "files" || $rk == "products"): ?>
+								<td class="<?php echo $rk; ?>" style="text-align: left;"><?php echo str_replace(",", "|<br/>", $records[$i][$rk]); ?></td>
+							<?php else: ?>
+									<td class="<?php echo $rk; ?>"><?php echo $records[$i][$rk]; ?></td>
+							<?php endif; ?>
 						<?php endforeach; ?>
 					</tr>    
 				<?php } ?>

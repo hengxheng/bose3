@@ -1,11 +1,11 @@
 <?php
 
-	$base_url = "http://localhost:8080/server";
+	$base_url = "http://localhost/bose4/server";
 	$page_title = "ADMIN";
 	date_default_timezone_set("Australia/Sydney");
-	$db = "db";
+	$db = "localhost";
 	$username = "root";
-	$password = "hidden1234";
+	$password = "";
 	$dbname = "MyDB";
 	
 	$table_name = "Entry";

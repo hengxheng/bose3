@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import { GiftBox } from './GiftBox';
+import GiftBox from './GiftBox';
 
 export default class GiftBlock extends React.Component {
     constructor(props){
@@ -17,23 +17,20 @@ export default class GiftBlock extends React.Component {
         this.setState({
             open: !s
         });
-        console.log(this.state);
     }
+
     render(){
         return (
             <div className={ "giftBlock "+(this.state.open?"opened":"closed") }>
-                <div className="giftBlock-name" onClick={ this.handleCollapse }>
-                    { this.props.name }
-                </div>
+                <div className="giftBlock-name" onClick={ this.handleCollapse }>{ this.props.name }</div>
                 <div className="giftBlock-inner">
                     {
                         this.props.products.map( (i,k) => {
-                            return <GiftBox key={k} product={ i }/>
+                            return <GiftBox key={k} product={ i } />
                         })
                     }
                 </div>
             </div>
         );
     }
-    
 };

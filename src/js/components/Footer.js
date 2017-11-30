@@ -14,8 +14,7 @@ export const Footer = (props) => {
                     <p>Phone number: AU: <a href="tel: 1800 023 367">1800 023 367</a>/NZ: <a href="tel: 1800 061 046">1800 061 046</a> or email: <a href="mailto:ausinfo@bose.com">ausinfo@bose.com</a></p>
                         <p>&copy; Bose Corporation 2017</p>
                     </div>
-                    <div className="terms">
-                        
+                    <div className="terms">     
                         <p><a href="/Bose.pdf" target="_blank">Terms & Conditions</a></p>
                     </div>
                 </div>

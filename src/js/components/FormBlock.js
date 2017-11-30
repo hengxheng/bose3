@@ -3,6 +3,7 @@ import FileUploader from "./FileUploader";
 import GiftBlock from "./GiftBlock";
 import * as productsData from "../productData";
 import { connect } from 'react-redux';
+import { error } from "util";
 
 
 class FormBlock extends React.Component{
@@ -21,7 +22,6 @@ class FormBlock extends React.Component{
                 country:"",
                 newsletter: false
             },
-            fileUploaded : false,
             submitStatus : "",
             formMsg : "",
             files: [
@@ -83,14 +83,11 @@ class FormBlock extends React.Component{
         let data = this.state.formValue;
         let valid = true;
         let errorMsg = [];
-
-        console.log(this.props.gifts);
-        console.log(data);
-        console.log(this.state.files);
+        let gifts = this.props.gifts;
+    
         //form validation
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
-
 
         // if(data.fullname == ""){
         //     valid = false;
@@ -132,14 +129,27 @@ class FormBlock extends React.Component{
         //     valid = false;
         //     errorMsg.push("Country is required.");
         // }
+        if(gifts.length <= 0){
+            valid = false;
+            errorMsg.push("Please select your redeem product");
+        }
+        
+
+        let _files = this.state.files;
+        let files = [];
+        _files.map( (k) => { 
+            if(k.fileName != ""){
+                files.push(k.fileName);
+            }
+        });
 
 
+        if(files.length <= 0){
+            valid = false;
+            errorMsg.push("Please upload receipt(s)");
+        }
 
-        // if(data.files == ""){
-        //     valid = false;
-        //     errorMsg.push("Please upload the receipt before submitting the form.");
-        // }
-
+        
         if(!valid){
             let error = "";
             errorMsg.map( (i) =>{
@@ -150,21 +160,27 @@ class FormBlock extends React.Component{
                 formMsg: error
             });
         }
-        // else{
-        //     this.setState({
-        //         submitStatus: "",
-        //         formMsg: ""
-        //     });
+        else{
+            this.setState({
+                submitStatus: "",
+                formMsg: ""
+            });
 
-        //     const submited_url = "/server/form.php";
-        //     const params = Object.keys(data).map( (k) => {
-        //         return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-        //     }).join('&');
+            data.files = files;
+            data.gifts = gifts;
+            console.log(data);
 
-        //     axios.post(submited_url, params)
-        //         .then( res => {
-        //                 console.log(res.data);
-        //                 this.setState({
+            const submited_url = "/server/form.php";
+            // const params = Object.keys(data).map( (k) => {
+            //     return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            // }).join('&');
+
+            const params = JSON.stringify(data);
+
+            axios.post(submited_url, params)
+                .then( res => {
+                        console.log(res.data);
+                        this.setState({
         //                     formValue: {
         //                         firstname: "",
         //                         lastname: "",
@@ -177,26 +193,21 @@ class FormBlock extends React.Component{
         //                         state:"",
         //                         postcode:"",
         //                         country:"",
-        //                         newsletter: false,
-        //                         color: "White",
-        //                         file:""   
+        //                         newsletter: false, 
         //                     },
-        //                     submitStatus: "success",
-        //                     formMsg: "<p>Thank you for submitting a request to redeem a free product. You will receive your redeemed item within the next 30 days.</p>"
-        //                 });
-        //             }
-        //         )
-        //         .catch(error => {
-        //             console.log(error)
-        //         });
-        // }
+                            submitStatus: "success",
+                            formMsg: "<p>Thank you for submitting a request to redeem a free product. You will receive your redeemed item within the next 30 days.</p>"
+                        });
+                    }
+                )
+                .catch(error => {
+                    console.log(error)
+                });
+        }
     }
 
 
     render(){
-        
-            
-        
         return (
             <div className="form-block">
             <form id="submit-form" action="#" method="post" encType="multipart/form-data" onSubmit = { (e) => { this.handleSubmit(e) } }>

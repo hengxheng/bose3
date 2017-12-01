@@ -38,7 +38,24 @@
 	('{$fullname}', '{$email}', '{$phone}', '{$serialNo}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$products}', '{$files}', '{$newsletter}', '{$created_date}')";
 
 	if ($conn->query($sql) === TRUE) {
-	    
+		$msg = "Hi, \r\n
+			There is a new submission. \r\n
+			Name: {$fullname} \r\n
+			Email: {$email} \r\n
+			Phone: {$phone} \r\n
+			Serials: {$serialNo} \r\n
+			Address: {$address1} \r\n
+			City: {$city} \r\n
+			State: {$state} \r\n
+			Postcode: {$postcode} \r\n
+			Country: {$country} \r\n
+			Products: {$products} \r\n
+			Subscript: {$newsletter} \r\n
+			Date: {$created_date} \r\n
+		";
+		
+		// send email
+		mail($notify_email,"Bose - Be rewarded for every Lifestyle® system you sell",$msg);
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}

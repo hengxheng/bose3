@@ -7,6 +7,7 @@
 	$username = "root";
 	$password = "";
 	$dbname = "MyDB";
+	$notify_email ="hzou@gsquared.com.au";
 	
 	$table_name = "Entry";
 

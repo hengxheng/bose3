@@ -91,3 +91,12 @@ body.admin{
         float:none;
     }
 }
+
+.dl{
+    display:inline-block;
+    margin: 5px;
+    background: #242424;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+}

@@ -120,10 +120,18 @@
 				?>	
 					<tr>
 						<?php foreach ($records[$i] as $rk => $rv): ?>
-							<?php if($rk == "files" ): ?>
+							<?php if($rk == "products" ): ?>
 								<td class="<?php echo $rk; ?>" style="text-align: left;"><?php echo str_replace(",", "|<br/>", $records[$i][$rk]); ?></td>
-							<?php elseif($rk == "products"): ?>
-								<td class="<?php echo $rk; ?>" style="text-align: left;"><?php echo str_replace(",", "|<br/>", $records[$i][$rk]); ?></td>
+							<?php elseif($rk == "files"): ?>
+								<td class="<?php echo $rk; ?>" style="text-align: left;">
+									<?php
+										$_files = explode(",",$records[$i][$rk]); 
+										foreach ($_files as $k=>$f){
+											echo '<a href="'.$f.'" download class="dl">'.$k.'</a>';
+										}
+						
+									?>
+							</td>
 							<?php else: ?>
 									<td class="<?php echo $rk; ?>"><?php echo $records[$i][$rk]; ?></td>
 							<?php endif; ?>

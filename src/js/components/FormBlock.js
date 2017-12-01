@@ -197,6 +197,8 @@ class FormBlock extends React.Component{
                             submitStatus: "success",
                             formMsg: "<p>Thank you for submitting a request to redeem FREE product(s). We will be in touch shortly.</p>"
                         });
+                        console.log("Reset State");
+                        console.log(this.state);
                     }
                 )
                 .catch(error => {

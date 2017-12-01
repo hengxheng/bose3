@@ -22,8 +22,8 @@ export const headphones = [
             imageUrl: url+"/Headphones/QC35wireless.jpg"
         },
         {
-            name: "Quiet Control 30 wireless",
-            points : 50,
+            name: "QuietControl™ 30 wireless",
+            points : 40,
             imageUrl: url+"/Headphones/Quiet_Control_30_wireless.jpg"
         },
         {
@@ -37,37 +37,37 @@ export const headphones = [
 export const speakers = [
     {
         name: "SoundLink® Micro Bluetooth Speaker",
-        points: 20,
+        points: 10,
         imageUrl: url+"/Speakers/SL_Micro_Bluetooth.jpg"
     },
     {
         name: "SoundLink® Color Bluetooth® speaker II",
-        points: 20,
+        points: 10,
         imageUrl: url+"/Speakers/SL_Color_Bluetooth_II.jpg"
     },
     {
         name: "SoundLink® Revolve Bluetooth® speaker",
-        points: 40,
+        points: 20,
         imageUrl: url+"/Speakers/SL_revolve.jpg"
     },
     {
         name: "SoundLink® Revolve+ Bluetooth® speaker",
-        points: 10,
+        points: 40,
         imageUrl: url+"/Speakers/SL_Revolve_bluetooth.jpg"
     },
     {
         name: "SoundTouch 10 wireless speaker",
-        points: 10,
+        points: 20,
         imageUrl: url+"/Speakers/ST_10_wireless.jpg"
     },
     {
         name: "SoundTouch® 20 Wi-Fi system",
-        points: 10,
+        points: 30,
         imageUrl: url+"/Speakers/ST20_wifi_system.jpg"
     },
     {
         name: "SoundTouch 30 wireless speaker",
-        points: 10,
+        points: 60,
         imageUrl: url+"/Speakers/ST30_wireless_speaker.jpg"
     },
     {

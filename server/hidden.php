@@ -120,7 +120,9 @@
 				?>	
 					<tr>
 						<?php foreach ($records[$i] as $rk => $rv): ?>
-							<?php if($rk == "files" || $rk == "products"): ?>
+							<?php if($rk == "files" ): ?>
+								<td class="<?php echo $rk; ?>" style="text-align: left;"><?php echo str_replace(",", "|<br/>", $records[$i][$rk]); ?></td>
+							<?php elseif($rk == "products"): ?>
 								<td class="<?php echo $rk; ?>" style="text-align: left;"><?php echo str_replace(",", "|<br/>", $records[$i][$rk]); ?></td>
 							<?php else: ?>
 									<td class="<?php echo $rk; ?>"><?php echo $records[$i][$rk]; ?></td>

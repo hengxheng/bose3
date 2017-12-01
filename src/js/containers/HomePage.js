@@ -26,7 +26,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="section-content">
                             <div className="flex-row">
-                                <div className="col3">
+                                <div className="col-3">
                                     <div className="points-block"> 
                                         <div id="pc1" className="points-circle">
                                             <h2>20 pts.</h2>
@@ -39,7 +39,7 @@ export default class Home extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col3">
+                                <div className="col-3">
                                     <div className="points-block">
                                         <div id="pc2" className="points-circle">
                                             <h2>10 pts.</h2>
@@ -52,7 +52,7 @@ export default class Home extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col3">
+                                <div className="col-3">
                                     <div className="points-block">
                                         <div id="pc3" className="points-circle">
                                             <h2>10 pts.</h2>

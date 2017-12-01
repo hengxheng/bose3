@@ -170,8 +170,8 @@ class FormBlock extends React.Component{
             data.files = files;
             data.gifts = gifts;
 
-            // const submited_url = "/server/form.php";
-            const submited_url = document.location.origin+"/bose4/server/form.php";
+            const submited_url = "/server/form.php";
+            // const submited_url = document.location.origin+"/bose4/server/form.php";
             const params = Object.keys(data).map( (k) => {
                 return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
             }).join('&');

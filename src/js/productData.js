@@ -1,4 +1,4 @@
-const url = "https://uat.redeembose.com/productImages/";
+const url = "https://www.redeembose.com/productImages/";
 
 export const headphones = [
         {
@@ -48,12 +48,12 @@ export const speakers = [
     {
         name: "SoundLink® Revolve Bluetooth® speaker",
         points: 20,
-        imageUrl: url+"/Speakers/SL_revolve.jpg"
+        imageUrl: url+"/Speakers/SL_Revolve_bluetooth.jpg"
     },
     {
-        name: "SoundLink® Revolve+ Bluetooth® speaker",
+        name: "SoundLink® Revolve + Bluetooth® speaker",
         points: 40,
-        imageUrl: url+"/Speakers/SL_Revolve_bluetooth.jpg"
+        imageUrl: url+"/Speakers/SL_revolve.jpg"
     },
     {
         name: "SoundTouch 10 wireless speaker",

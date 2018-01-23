@@ -7,7 +7,6 @@ class GiftBox extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            selected: false,
             inputVal: 0,
             selectVal: "",
             inputError: false,
@@ -17,10 +16,8 @@ class GiftBox extends React.Component {
 
     handleClick(e){
         e.preventDefault();
-        const s = !this.state.selected;
-        this.setState ({
-            selected: s
-        });
+        let qtyValid = false;
+        let colorValid = false;
 
         if(this.state.inputVal < 1 || this.state.inputVal == ""){
             this.setState({
@@ -31,25 +28,37 @@ class GiftBox extends React.Component {
             this.setState({
                 inputError: false
             });
+            qtyValid = true;
         }
 
-        if(this.state.selectVal == ""){
-            this.setState({
-                selectError: true
-            })
+        if(this.props.product.color.length>0){
+            if(this.state.selectVal == ""){
+                this.setState({
+                    selectError: true
+                });
+            }
+            else{
+                this.setState({
+                    selectError: false
+                });
+                colorValid = true;
+            }
         }
         else{
-            this.setState({
-                selectError: false
+            colorValid = true;
+        }
+
+
+        if(colorValid && qtyValid){
+            this.props.AddGift({
+                name: this.props.product.name,
+                qty: this.state.inputVal,
+                color: this.state.selectVal
             });
         }
-
-        if(s){
-            this.props.AddGift( this.props.product.name);
-        }
-        else{
-            this.props.RemoveGift( this.props.product.name );
-        }
+        // else{
+        //     this.props.RemoveGift( this.props.product.name );
+        // }
     }
 
     handleInputChange(e){
@@ -71,7 +80,7 @@ class GiftBox extends React.Component {
                         <h2 className="giftBoxName">{ this.props.product.name }</h2>
                         <p className="giftBoxPoint">{ this.props.product.points } pts</p>
                         <div className="giftBoxOptions">
-                            <input name={ this.props.product.name + '-qty' } placeholder="Qty" onChange={ (e) => this.handleInputChange(e) } className={ this.state.inputError? "error": "" }/>
+                            <input placeholder="Qty" onChange={ (e) => this.handleInputChange(e) } className={ this.state.inputError? "error": "" }/>
                             <select className={ (this.props.product.color.length>0 ? "hasColor": " ") + (this.state.selectError? " error": " ") } onChange={ (e) => this.handleSelectChange(e) }>
                                 <option value="">Color</option>
                                 {
@@ -102,8 +111,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        AddGift: (name) => {
-            dispatch(gifts.addGift(name));
+        AddGift: (gift) => {
+            dispatch(gifts.addGift(gift));
         },
         RemoveGift: (name) => {
             dispatch(gifts.removeGift(name));

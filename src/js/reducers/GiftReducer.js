@@ -1,5 +1,11 @@
 const INIT_STATE = { 
-    selectedGifts : []
+    selectedGifts : [],
+    newAdded: false,
+    newGift: {
+        name:"",
+        qty: 0,
+        color:""
+    },
 };
 
 const GiftReducer = (state = INIT_STATE, action) => {
@@ -10,8 +16,11 @@ const GiftReducer = (state = INIT_STATE, action) => {
             gifts.push(action.payload);
             state = {
                 ...state,
-                selectedGifts : gifts
+                selectedGifts: gifts,
+                newGift: action.payload,
+                newAdded: true
             }  
+            
             break;
 
         case "RemoveGift":
@@ -23,6 +32,12 @@ const GiftReducer = (state = INIT_STATE, action) => {
                 ...state,
                 selectedGifts : gifts
             }  
+            break;
+        case "HidePopup":
+            state = {
+                ...state,
+                newAdded: false
+            }
             break;
     }
 

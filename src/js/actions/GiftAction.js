@@ -11,3 +11,10 @@ export function removeGift(name){
         payload: name
     }
 }
+
+export function HidePopup(){
+    return {
+        type: "HidePopup",
+        payload: false
+    }
+}

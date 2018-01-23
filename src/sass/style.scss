@@ -682,8 +682,9 @@ footer.site-footer{
         justify-content: space-between;
         .giftBoxImage{
           width: 35%;
-          border: 1px solid #eeeeee;
+          
           img{
+            border: 1px solid #eeeeee;
             width: 100%;
           }
         }
@@ -702,6 +703,28 @@ footer.site-footer{
           .giftBoxPoint{
             font-size: 14px;
             margin: 0 0 15px;
+          }
+          .giftBoxOptions{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 0 15px;
+            input{
+              width: 35%;
+              &.error{
+                border: 1px solid red;
+              }
+            }
+            select{
+              width: 60%;
+              display:none;
+              &.hasColor{
+                display:block;
+              }
+              &.error{
+                border: 1px solid red;
+              }
+            }
           }
           .giftBoxCTA{
             margin-top: auto;
@@ -745,7 +768,7 @@ footer.site-footer{
       }
     }
     .giftBlock-inner{
-      max-height: 700px;
+      max-height: 720px;
       transition: all 0.5s ease-in;
     }
   }

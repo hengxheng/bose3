@@ -10,9 +10,9 @@ export default class App extends React.Component {
         return (
             <div className="app-container">
                 <Header/>
-                <div className="page-container">
-                    { renderRoutes( this.props.route.routes )}
-                </div>
+                    <div className="page-container">
+                        { renderRoutes( this.props.route.routes )}
+                    </div>
                 <Footer/>
             </div>
         );

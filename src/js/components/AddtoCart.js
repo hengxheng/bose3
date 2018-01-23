@@ -22,7 +22,7 @@ class AddtoCart extends React.Component {
                 <h2>Your item has been successfully added to your cart</h2>
                 <h3>{ this.props.product.name }</h3>
                 <p>QTY: <strong>{ this.props.product.qty }</strong></p>
-                <p className={ (this.props.product.color != "")? "HasColor":"" } >COLOR: <strong>{ this.props.product.color }</strong></p>
+                <p className={ (this.props.product.color.length>0)? "":"noColor" } >COLOR: <strong>{ this.props.product.color }</strong></p>
             </div>
         );
     }

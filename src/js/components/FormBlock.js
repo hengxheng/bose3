@@ -6,7 +6,7 @@ import * as productsData from "../productData";
 import { connect } from 'react-redux';
 import { error } from "util";
 import axios from "axios";
-
+import * as gifts from '../actions/GiftAction';
 
 class FormBlock extends React.Component{
     constructor(props){
@@ -34,10 +34,6 @@ class FormBlock extends React.Component{
             ]
         }
         this.doneUpdate = this.doneUpdate.bind(this);
-    }
-
-    componentDidMount(){
-
     }
 
 
@@ -82,11 +78,12 @@ class FormBlock extends React.Component{
     //handle from submition
     handleSubmit(e) {
         e.preventDefault();
+
         let data = this.state.formValue;
         let valid = true;
         let errorMsg = [];
         let gifts = this.props.gifts;
-        console.log(gifts);
+
         //form validation
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
@@ -162,25 +159,25 @@ class FormBlock extends React.Component{
             });
         }
         else{
+            
             this.setState({
                 submitStatus: "",
                 formMsg: ""
             });
 
             data.files = files;
-            data.gifts = gifts;
+            data.gifts = JSON.stringify(gifts);
 
-            const submited_url = "/server/form.php";
-            // const submited_url = document.location.origin+"/bose4/server/form.php";
+            // const submited_url = "/server/form.php";
+            const submited_url = document.location.origin+"/bose4/server/form.php";
             const params = Object.keys(data).map( (k) => {
                 return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
             }).join('&');
 
-            // const params = JSON.stringify(data);
-            console.log(params);
+            
             axios.post(submited_url, params)
-                .then( res => {
-                        console.log(res.data);
+                .then( 
+                    res => {
                         this.setState({
                             formValue: {
                                 fullname: "",
@@ -197,12 +194,11 @@ class FormBlock extends React.Component{
                             submitStatus: "success",
                             formMsg: "<p>Thank you for submitting a request to redeem FREE product(s). We will be in touch shortly.</p>"
                         });
-                        console.log("Reset State");
-                        console.log(this.state);
+                        this.props.reset();
                     }
                 )
                 .catch(error => {
-                    console.log(error)
+                    console.log(error);
                 });
         }
     }
@@ -317,7 +313,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        
+        reset:  () => {
+            dispatch(gifts.clearGifts());
+        }
     }
 }
 

@@ -7,7 +7,7 @@ class GiftBox extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            inputVal: 0,
+            inputVal: "",
             selectVal: "",
             inputError: false,
             selectError: false
@@ -56,10 +56,12 @@ class GiftBox extends React.Component {
                 color: this.state.selectVal,
                 point: this.props.product.points
             });
+
+            this.setState({
+                inputVal: 0,
+                selectVal: ""
+            });
         }
-        // else{
-        //     this.props.RemoveGift( this.props.product.name );
-        // }
     }
 
     handleInputChange(e){
@@ -81,8 +83,8 @@ class GiftBox extends React.Component {
                         <h2 className="giftBoxName">{ this.props.product.name }</h2>
                         <p className="giftBoxPoint">{ this.props.product.points } pts</p>
                         <div className="giftBoxOptions">
-                            <input placeholder="Qty" onChange={ (e) => this.handleInputChange(e) } className={ this.state.inputError? "error": "" }/>
-                            <select className={ (this.props.product.color.length>0 ? "hasColor": " ") + (this.state.selectError? " error": " ") } onChange={ (e) => this.handleSelectChange(e) }>
+                            <input placeholder="Qty" onChange={ (e) => this.handleInputChange(e) } className={ this.state.inputError? "error": "" } value={this.state.inputVal} />
+                            <select className={ (this.props.product.color.length>0 ? "hasColor": " ") + (this.state.selectError? " error": " ") } onChange={ (e) => this.handleSelectChange(e) } value={this.state.selectVal}>
                                 <option value="">Color</option>
                                 {
                                   this.props.product.color.map((i,k)=>{

@@ -810,6 +810,9 @@ footer.site-footer{
     strong{
       font-weight: bold;
     }
+    &.noColor{
+      display:none;
+    }
   }
   &.show{
     display:block;
@@ -858,6 +861,7 @@ footer.site-footer{
   h2{
     text-align: left;
     margin: 0 0 20px;
+    padding:10px;
   }
   .tableBottom{
     text-align: right;

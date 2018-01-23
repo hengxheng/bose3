@@ -54,6 +54,14 @@ const GiftReducer = (state = INIT_STATE, action) => {
                 newAdded: false
             }
             break;
+
+        case "clearGifts":
+            state = {
+                ...state,
+                selectedGifts: [],
+                total: 0
+            }
+            break;
     }
 
     return state;

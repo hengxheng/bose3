@@ -18,3 +18,10 @@ export function HidePopup(){
         payload: false
     }
 }
+
+export function clearGifts(){
+    return {
+        type: "clearGifts",
+        payload: false
+    }
+}

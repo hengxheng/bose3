@@ -121,7 +121,16 @@
 					<tr>
 						<?php foreach ($records[$i] as $rk => $rv): ?>
 							<?php if($rk == "products" ): ?>
-								<td class="<?php echo $rk; ?>" style="text-align: left;"><?php echo str_replace(",", "|<br/>", $records[$i][$rk]); ?></td>
+								<td class="<?php echo $rk; ?>" style="text-align: left;">
+								<?php 
+									$temp = str_replace("[", "", $records[$i][$rk]);
+									$temp = str_replace("]", "", $temp);
+									$product = explode(",", $temp); 
+									foreach ($product as $p){
+										echo "<p>".$p."</p>";
+									}
+								?>
+							</td>
 							<?php elseif($rk == "files"): ?>
 								<td class="<?php echo $rk; ?>" style="text-align: left;">
 									<?php

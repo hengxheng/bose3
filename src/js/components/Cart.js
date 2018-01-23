@@ -22,7 +22,7 @@ export default class Cart extends React.Component {
                         <div className="tableCell th">
                             COLOR
                         </div>
-                        <div className="tableCell th">
+                        <div className="tableCell th hideMB">
                             POINTS
                         </div>
                         <div className="tableCell th">

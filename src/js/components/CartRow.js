@@ -25,7 +25,7 @@ class CartRow extends React.Component {
                 <div className="tableCell">
                     { this.props.product.color? this.props.product.color: "N/A" }
                 </div>
-                <div className="tableCell">
+                <div className="tableCell hideMB">
                     { this.props.product.point }
                 </div>
                 <div className="tableCell">

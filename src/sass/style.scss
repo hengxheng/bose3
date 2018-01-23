@@ -682,7 +682,6 @@ footer.site-footer{
         justify-content: space-between;
         .giftBoxImage{
           width: 35%;
-          
           img{
             border: 1px solid #eeeeee;
             width: 100%;
@@ -708,7 +707,7 @@ footer.site-footer{
             display:flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin: 0 0 15px;
+            margin: 0 0 25px;
             input{
               width: 35%;
               &.error{
@@ -727,7 +726,7 @@ footer.site-footer{
             }
           }
           .giftBoxCTA{
-            margin-top: auto;
+            // margin-top: auto;
           }
           .giftBox-btn{
             display: inline-block;
@@ -770,6 +769,9 @@ footer.site-footer{
     .giftBlock-inner{
       max-height: 720px;
       transition: all 0.5s ease-in;
+      @media screen and (max-width: 700px){
+        max-height: 1600px;
+      }
     }
   }
   &.closed{
@@ -795,6 +797,9 @@ footer.site-footer{
   padding: 30px;
   display:none;
   animation: fadeOut 0.5s linear;
+  @media screen and (max-width: 650px){
+    width: 80%;
+  }
   h2{
     margin: 0 0 15px;
     font-weight: bold;
@@ -880,20 +885,34 @@ footer.site-footer{
   }
   .tableCell{
     width: 15%;
-    text-align: left;
+    text-align: center;
     padding: 10px;
     box-sizing: border-box;
     &:first-child{
       width: 40%;
+      text-align: left;
     }
     &.th{
       background: #eeeeee;
 
+    }
+    @media screen and (max-width: 650px){
+      width: 25%;
+      font-size: 12px;
+      &:first-child{
+        width: 25%;
+      }
     }
   }
   .ItemRemove{
     text-decoration: none;
     font-weight: bold;
     color: #000;
+  }
+}
+
+@media screen and (max-width: 650px){
+  .hideMB{
+    display:none;
   }
 }

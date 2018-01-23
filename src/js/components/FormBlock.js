@@ -1,6 +1,7 @@
 import React from "react";
 import FileUploader from "./FileUploader";
 import GiftBlock from "./GiftBlock";
+import Cart from "./Cart";
 import * as productsData from "../productData";
 import { connect } from 'react-redux';
 import { error } from "util";
@@ -85,7 +86,7 @@ class FormBlock extends React.Component{
         let valid = true;
         let errorMsg = [];
         let gifts = this.props.gifts;
-    
+        console.log(gifts);
         //form validation
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
@@ -150,7 +151,6 @@ class FormBlock extends React.Component{
             errorMsg.push("Please upload receipt(s)");
         }
 
-        
         if(!valid){
             let error = "";
             errorMsg.map( (i) =>{
@@ -177,7 +177,7 @@ class FormBlock extends React.Component{
             }).join('&');
 
             // const params = JSON.stringify(data);
-
+            console.log(params);
             axios.post(submited_url, params)
                 .then( res => {
                         console.log(res.data);
@@ -277,11 +277,14 @@ class FormBlock extends React.Component{
                      <div id="upload-output"></div>
                  </div>
                  <div className="form-ele">
-                     <GiftBlock name="Headphones" show={true} products={ productsData.headphones } />
-                     <GiftBlock name="Speakers" products={ productsData.speakers } />
-                     <GiftBlock name="Systems" products={ productsData.systems } />
-                     <GiftBlock name="Other products" products={ productsData.others } />
+                    <GiftBlock name="Headphones" show={true} products={ productsData.headphones } />
+                    <GiftBlock name="Speakers" products={ productsData.speakers } />
+                    <GiftBlock name="Systems" products={ productsData.systems } />
+                    <GiftBlock name="Other products" products={ productsData.others } />
                  </div>
+                 <div className="form-ele">
+                    <Cart products={ this.props.gifts } total={ this.props.total }/>
+                 </div> 
                  <div className="form-ele">
                      <div className="checkbox-wrapper">
                          <label htmlFor="newsletter"><input type="checkbox" id="newsletter" name="newsletter"  onChange={ (e) => this.handleChange(e) }/><span>Yes, I'd like email updates regarding new products and promotions from Bose®.</span></label>
@@ -307,7 +310,8 @@ class FormBlock extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-       gifts : state.GiftReducer.selectedGifts
+       gifts : state.GiftReducer.selectedGifts,
+       total: state.GiftReducer.total
     };
 }
 

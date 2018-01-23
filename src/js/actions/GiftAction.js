@@ -5,10 +5,10 @@ export function addGift(name){
     }
 }
 
-export function removeGift(name){
+export function removeGift(index){
     return {
         type: "RemoveGift",
-        payload: name
+        payload: index
     }
 }
 

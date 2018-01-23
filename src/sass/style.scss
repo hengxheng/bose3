@@ -846,3 +846,50 @@ footer.site-footer{
     opacity: 0;
   }
 }
+
+
+#cart-block{
+  width: 100%;
+  display:none;
+  border: 1px solid #d9d9d9;
+  &.show{
+    display:block;
+  }
+  h2{
+    text-align: left;
+    margin: 0 0 20px;
+  }
+  .tableBottom{
+    text-align: right;
+    border-top: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+}
+.cart-table{
+  width: 100%;
+  text-align: left;
+  .tableRow{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .tableCell{
+    width: 15%;
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box;
+    &:first-child{
+      width: 40%;
+    }
+    &.th{
+      background: #eeeeee;
+
+    }
+  }
+  .ItemRemove{
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+  }
+}

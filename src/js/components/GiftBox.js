@@ -19,7 +19,7 @@ class GiftBox extends React.Component {
         let qtyValid = false;
         let colorValid = false;
 
-        if(this.state.inputVal < 1 || this.state.inputVal == ""){
+        if(this.state.inputVal < 1 || this.state.inputVal == "" || !(/^\d+$/.test(this.state.inputVal))){
             this.setState({
                 inputError: true
             });
@@ -53,7 +53,8 @@ class GiftBox extends React.Component {
             this.props.AddGift({
                 name: this.props.product.name,
                 qty: this.state.inputVal,
-                color: this.state.selectVal
+                color: this.state.selectVal,
+                point: this.props.product.points
             });
         }
         // else{

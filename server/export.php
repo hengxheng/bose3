@@ -24,7 +24,7 @@
     foreach ($records as $r) {
         foreach ($r as $k => $v){
             if($k != "id"){
-                $line .= $v."\t";
+                $line .= trim(preg_replace('/\s+/', ' ', $v))."\t";
             }
         }
         $line .= "\n";

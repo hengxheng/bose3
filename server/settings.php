@@ -1,13 +1,13 @@
 <?php
 
-	$base_url = "http://localhost/bose4/server";
+	$base_url = "/server";
 	$page_title = "ADMIN";
 	date_default_timezone_set("Australia/Sydney");
 	$db = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "1234";
 	$dbname = "MyDB";
-	$notify_email ="hzou@gsquared.com.au";
+	$notify_email ="hengxheng@hotmail.com";
 	
 	$table_name = "Entry";
 

@@ -13,10 +13,10 @@ export default class Home extends React.Component {
             <div className="product-page">
                 <div className="page-header">
                     <div className="site-inner">
-                        <div className="page-header-inner">
+                        {/* <div className="page-header-inner">
                             <h2>Be rewarded for every Lifestyle® system you sell.*</h2>
                             <p>For a limited time, eligible participant who sells a Lifestyle® system in the nominated range during the promotion period will earn points. These points can then be accrued and have the opportunity to claim on redeemable gifts.</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="page-section" id="s1">

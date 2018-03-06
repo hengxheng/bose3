@@ -202,10 +202,7 @@ footer.site-footer{
 
 .product-page{
   .page-header{
-    padding: 250px 0;
-    background: url(../images/header.jpg) no-repeat center center;
-    background-size: cover;
-    height: 90vh;
+    padding: 50px 0;
     box-sizing:border-box;
     .page-header-inner{
       text-align: center;
@@ -553,12 +550,12 @@ footer.site-footer{
   &.error{
     border: 1px solid #d70902;
     padding-left: 50px;
-    background:url(../images/cross.png) no-repeat 15px 15px;
+    // background:url(../images/cross.png) no-repeat 15px 15px;
   }
   &.success{
     border: 1px solid #00cc74;
     padding-left: 50px;
-    background:url(../images/tick.png) no-repeat 15px 15px;
+    // background:url(../images/tick.png) no-repeat 15px 15px;
   }
   p{
       margin: 0 0 10px;
@@ -602,7 +599,7 @@ footer.site-footer{
   .slick-prev{
     width: 21px; 
     height: 40px;
-    background: url('../images/left-arrow.png') no-repeat transparent;
+    // background: url('../images/left-arrow.png') no-repeat transparent;
     font-size:0;
     position: absolute;
     top:50%;
@@ -611,12 +608,17 @@ footer.site-footer{
     border:0;
     transform: translateY(-50%);
     cursor: pointer;
+    &:after{
+      content:"<";
+      color:#111;
+      font-size:20px;
+    }
   }
   
   .slick-next{
     width: 21px; 
     height: 40px;
-    background: url('../images/right-arrow.png') no-repeat transparent;
+    // background: url('../images/right-arrow.png') no-repeat transparent;
     font-size:0;
     position: absolute;
     top:50%;
@@ -625,6 +627,11 @@ footer.site-footer{
     border:0;
     transform: translateY(-50%);
     cursor: pointer;
+    &:after{
+      content:">";
+      color:#111;
+      font-size:20px;
+    }
   }
 }
 
